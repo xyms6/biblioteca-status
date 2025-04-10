@@ -9,6 +9,7 @@ import com.livro.joao.entities.Livro;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -24,7 +25,7 @@ public class LivroService {
         return livros.stream().map(LivroDTO::new).collect(Collectors.toList());
     }
 
-    public LivroDTO getLivroInfo(int bookId) {
+    public Object getLivroInfo(int bookId) {
         // Procura no cache
         for (LivroDTO livro : cache) {
             if (livro.getId() == bookId) {
@@ -35,16 +36,17 @@ public class LivroService {
         
         // Se não encontrou no cache, busca no banco
         System.out.println("Cache miss - ID: " + bookId);
-        Livro livro = new Livro((long) bookId, "Livro " + bookId);
-        LivroDTO livroDTO = new LivroDTO(livro);
-        cache.add(livroDTO);
-        return livroDTO;
-    }
-
-    public void addLivro(LivroDTO livroDTO) {
-        Livro livro = new Livro();
-        livro.setNome(livroDTO.getNome());
-        livroRepository.save(livro);
+        Optional<Livro> livroOptional = livroRepository.findById((long) bookId);
+        
+        if (livroOptional.isPresent()) {
+            LivroDTO livroDTO = new LivroDTO(livroOptional.get());
+            cache.add(livroDTO);
+            System.out.println("Livro encontrado no banco e adicionado ao cache");
+            return livroDTO;
+        } else {
+            System.out.println("Livro não encontrado no banco");
+            return "Livro com ID " + bookId + " não encontrado";
+        }
     }
 
     public void updateLivroInfo(LivroDTO livroDTO) {
