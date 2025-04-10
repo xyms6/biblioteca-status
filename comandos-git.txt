@@ -1,0 +1,45 @@
+# Comandos para subir o código no GitHub
+
+1. Inicializar o repositório Git (se ainda não foi feito):
+git init
+
+2. Adicionar todos os arquivos ao controle de versão:
+git add .
+
+3. Fazer o primeiro commit:
+git commit -m "Primeiro commit: Sistema de Gerenciamento de Livros"
+
+4. Criar um novo repositório no GitHub:
+- Acesse https://github.com/new
+- Dê um nome ao repositório (ex: sistema-livros)
+- Não inicialize com README (já temos um)
+- Clique em "Create repository"
+
+5. Conectar o repositório local ao GitHub:
+git remote add origin https://github.com/seu-usuario/nome-do-repositorio.git
+
+6. Enviar o código para o GitHub:
+git push -u origin main
+
+# Comandos adicionais úteis:
+
+- Verificar status dos arquivos:
+git status
+
+- Ver histórico de commits:
+git log
+
+- Criar uma nova branch:
+git checkout -b nome-da-branch
+
+- Alternar entre branches:
+git checkout nome-da-branch
+
+- Atualizar o repositório local:
+git pull origin main
+
+# Dicas:
+- Sempre faça commits com mensagens descritivas
+- Mantenha o README.md atualizado
+- Use branches para desenvolver novas funcionalidades
+- Faça pull antes de push para evitar conflitos 
