@@ -2,15 +2,6 @@
 
 Um sistema simples para gerenciar livros com cache em memória, desenvolvido em Spring Boot.
 
-## 🚀 Funcionalidades
-
-### 📖 LivroService (Serviço)
-Responsável por toda a lógica de negócios relacionada aos livros.
-
-#### Cache de Livros
-- ⚡ Mantém uma lista em memória dos livros acessados recentemente
-- 🔄 Evita consultas repetidas ao banco de dados
-- 🚀 Acelera o acesso aos dados
 
 #### Métodos Principais
 | Método | Descrição |
@@ -32,7 +23,6 @@ Responsável por toda a lógica de negócios relacionada aos livros.
    - 🔄 Atualiza também no cache
    - 🔒 Mantém os dados sincronizados
 
-## 🌐 LivroController (API)
 
 ### Endpoints Disponíveis
 
