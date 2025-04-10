@@ -8,7 +8,6 @@ Um sistema simples para gerenciar livros com cache em memória, desenvolvido em 
 |--------|-----------|
 | `findAll()` | Retorna todos os livros do banco |
 | `getLivroInfo(id)` | Busca um livro específico (usa cache) |
-| `addLivro(livroDTO)` | Adiciona um novo livro |
 | `updateLivroInfo(livroDTO)` | Atualiza um livro existente |
 
 ### 🔄 Como o Cache Funciona
