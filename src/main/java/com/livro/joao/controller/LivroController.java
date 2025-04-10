@@ -29,12 +29,17 @@ public class LivroController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getLivroInfo(@PathVariable int id) {
         try {
-            LivroDTO livro = livroService.getLivroInfo(id);
-            return ResponseEntity.ok(livro);
+            Object resultado = livroService.getLivroInfo(id);
+            if (resultado instanceof LivroDTO) {
+                return ResponseEntity.ok(resultado);
+            } else {
+                return ResponseEntity.status(404).body(resultado);
+            }
         } catch (Exception e) {
             return ResponseEntity.internalServerError().body("Erro ao buscar livro: " + e.getMessage());
         }
     }
+    
 
     // Criar um metodo Put para atualizar um livro
     @PutMapping("/{id}")
